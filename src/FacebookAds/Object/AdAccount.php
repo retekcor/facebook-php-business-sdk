@@ -410,6 +410,7 @@ class AdAccount extends AbstractCrudObject {
       'title' => 'string',
       'url_tags' => 'string',
       'use_page_actor_override' => 'bool',
+      'degrees_of_freedom_spec' => 'map' // ACT ADJUSTMENT: required for v17.0
     );
     $enums = array(
       'applink_treatment_enum' => AdCreativeApplinkTreatmentValues::getInstance()->getValues(),
@@ -418,6 +419,16 @@ class AdAccount extends AbstractCrudObject {
       'category_media_source_enum' => AdCreativeCategoryMediaSourceValues::getInstance()->getValues(),
       'dynamic_ad_voice_enum' => AdCreativeDynamicAdVoiceValues::getInstance()->getValues(),
     );
+
+      $fields[]                          = "degrees_of_freedom_spec"; // ACT ADJUSTMENT: required for v17.0
+      $params['degrees_of_freedom_spec'] = array( // ACT ADJUSTMENT: required for v17.0
+                                                  'creative_features_spec' => array(
+                                                          'standard_enhancements' => array(
+                                                                  'enroll_status' => 'OPT_OUT'
+                                                          )
+                                                  )
+      );
+
 
     $request = new ApiRequest(
       $this->api,
