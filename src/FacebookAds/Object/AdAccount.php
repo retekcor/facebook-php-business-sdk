@@ -425,6 +425,27 @@ class AdAccount extends AbstractCrudObject {
                                                   'creative_features_spec' => array(
                                                           'standard_enhancements' => array(
                                                                   'enroll_status' => 'OPT_OUT'
+                                                          ),
+                                                          'advantage_plus_creative' => array(
+                                                                  'enroll_status' => 'OPT_OUT'
+                                                          ),
+                                                          'cv_transformation' => array(
+                                                                  'enroll_status' => 'OPT_OUT'
+                                                          ),
+                                                          'image_brightness_and_contrast' => array(
+                                                                  'enroll_status' => 'OPT_OUT'
+                                                          ),
+                                                          'image_templates' => array(
+                                                                  'enroll_status' => 'OPT_OUT'
+                                                          ),
+                                                          'image_touchups' => array(
+                                                                  'enroll_status' => 'OPT_OUT'
+                                                          ),
+                                                          'inline_comment' => array(
+                                                                  'enroll_status' => 'OPT_IN'
+                                                          ),
+                                                          'text_optimizations' => array(
+                                                                  'enroll_status' => 'OPT_OUT'
                                                           )
                                                   )
       );
