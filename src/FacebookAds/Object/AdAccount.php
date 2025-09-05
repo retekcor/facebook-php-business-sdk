@@ -410,8 +410,8 @@ class AdAccount extends AbstractCrudObject {
       'title' => 'string',
       'url_tags' => 'string',
       'use_page_actor_override' => 'bool',
-      'degrees_of_freedom_spec' => 'map' // ACT ADJUSTMENT: required for v17.0
-    );
+    	'degrees_of_freedom_spec' => 'map' // ACT ADJUSTMENT: required for v17.0
+	);
     $enums = array(
       'applink_treatment_enum' => AdCreativeApplinkTreatmentValues::getInstance()->getValues(),
       'authorization_category_enum' => AdCreativeAuthorizationCategoryValues::getInstance()->getValues(),
@@ -420,13 +420,13 @@ class AdAccount extends AbstractCrudObject {
       'dynamic_ad_voice_enum' => AdCreativeDynamicAdVoiceValues::getInstance()->getValues(),
     );
 
-      $fields[]                          = "degrees_of_freedom_spec"; // ACT ADJUSTMENT: required for v17.0
-      $params['degrees_of_freedom_spec'] = array( // ACT ADJUSTMENT: required for v17.0
-                                                  'creative_features_spec' => array(
-                                                          'standard_enhancements' => array(
+    $fields[] = "degrees_of_freedom_spec"; // ACT ADJUSTMENT: required for v17.0
+    $params['degrees_of_freedom_spec'] = array( // ACT ADJUSTMENT: required for v17.0
+            'creative_features_spec' => array(
+                                                          'advantage_plus_creative' => array(
                                                                   'enroll_status' => 'OPT_OUT'
                                                           ),
-                                                          'advantage_plus_creative' => array(
+                                                          'enhance_cta' => array(
                                                                   'enroll_status' => 'OPT_OUT'
                                                           ),
                                                           'cv_transformation' => array(
@@ -447,9 +447,8 @@ class AdAccount extends AbstractCrudObject {
                                                           'text_optimizations' => array(
                                                                   'enroll_status' => 'OPT_OUT'
                                                           )
-                                                  )
-      );
-
+            )
+    );
 
     $request = new ApiRequest(
       $this->api,
@@ -955,8 +954,6 @@ class AdAccount extends AbstractCrudObject {
       'daily_spend_cap' => 'unsigned int',
       'date_format' => 'string',
       'destination_type' => 'destination_type_enum',
-      'dsa_beneficiary' => 'string',
-      'dsa_payor' => 'string',
       'end_time' => 'datetime',
       'execution_options' => 'list<execution_options_enum>',
       'existing_customer_budget_percentage' => 'unsigned int',
@@ -1692,8 +1689,9 @@ class AdAccount extends AbstractCrudObject {
       'special_ad_category_country_enum' => CampaignSpecialAdCategoryCountryValues::getInstance()->getValues(),
       'status_enum' => CampaignStatusValues::getInstance()->getValues(),
     );
-
-    $request = new ApiRequest(
+//if($params['objective'] == "LEAD_GENERATION")
+  //      $this->api->setDefaultGraphVersion("16.0");
+$request = new ApiRequest(
       $this->api,
       $this->data['id'],
       RequestInterface::METHOD_POST,
